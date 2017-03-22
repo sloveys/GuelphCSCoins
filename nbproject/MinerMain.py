@@ -8,14 +8,14 @@
 import random
 
 "returns random number from Mersenne Twister algorithm"
-def get_random_mt(seed = 0):
+def get_random_mt(seed = 1, bits = 32):
     random.seed(seed)
-    rn = random.getrandbits(32)
+    rn = random.getrandbits(bits)
     return rn
 
 
 if __name__ == "__main__":
-    rn = get_random_mt(1)
+    rn = get_random_mt()
     print rn
 
 
