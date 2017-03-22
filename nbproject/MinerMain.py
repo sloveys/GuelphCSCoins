@@ -7,11 +7,15 @@
 
 import random
 import hashlib
+import sys
+print sys.version_info
 
 "returns random number from Mersenne Twister algorithm"
-def get_random_mt(seed = 1, bits = 64):
+def get_random_mt(seed = 1, bits = 64, size = 20):
     random.seed(seed)
-    rn = random.getrandbits(bits)
+    rn = {}
+    for i in range(0, size):
+        rn[i] = random.getrandbits(bits)
     return rn
 
 def hash_val(input):
@@ -21,8 +25,11 @@ def hash_val(input):
     
 
 if __name__ == "__main__":
-    rn = get_random_mt()
-    print rn
-    print hash_val("00000000000000000000000000000000000000000000000000000000000000000") == "e531ef0f962409170917abf9de3287afec23dd1c42c9e1fea66c5feab99e8f7c"
+    hvar = '00000000000000000000000000000000000000000000000000000000000000000'
+    new_hvar = hash_val(hvar)
+    seed = ''
+    for i in range(0, 8):
+        seed = seed + new_hvar[14- i*2] + new_hvar[15 - i*2]
+    print get_random_mt(int(seed, 16), 64)
 
 
