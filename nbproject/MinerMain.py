@@ -7,6 +7,7 @@
 
 import random
 import hashlib
+import ctypes
 import sys
 print sys.version_info
 
@@ -29,7 +30,9 @@ if __name__ == "__main__":
     new_hvar = hash_val(hvar)
     seed = ''
     for i in range(0, 8):
-        seed = seed + new_hvar[14- i*2] + new_hvar[15 - i*2]
-    print get_random_mt(int(seed, 16), 64)
+        seed = seed + new_hvar[14 - i*2] + new_hvar[15 - i*2]
+    print seed
+    print int(seed, 16)
+    print get_random_mt(int(seed, 16), 64, 20)
 
 
