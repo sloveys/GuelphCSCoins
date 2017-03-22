@@ -6,6 +6,7 @@
 # and open the template in the editor.
 
 import random
+import hashlib
 
 "returns random number from Mersenne Twister algorithm"
 def get_random_mt(seed = 1, bits = 32):
@@ -13,9 +14,15 @@ def get_random_mt(seed = 1, bits = 32):
     rn = random.getrandbits(bits)
     return rn
 
+def hash_val(input):
+    h = hashlib.sha256()
+    h.update(input)
+    return h.digest()
+    
 
 if __name__ == "__main__":
     rn = get_random_mt()
     print rn
+    print hash_val("00000000000000000000000000000000000000000000000000000000000000000")
 
 
