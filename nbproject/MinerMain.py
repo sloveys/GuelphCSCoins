@@ -9,7 +9,7 @@ import random
 import hashlib
 
 "returns random number from Mersenne Twister algorithm"
-def get_random_mt(seed = 1, bits = 32):
+def get_random_mt(seed = 1, bits = 64):
     random.seed(seed)
     rn = random.getrandbits(bits)
     return rn
